@@ -385,7 +385,7 @@ scrape_configs:
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/node_2.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/node_3.png)
 
 <br>
 #### Alerting 警報
