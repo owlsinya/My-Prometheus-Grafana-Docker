@@ -354,7 +354,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-在client機器中僅需要下載 ![Node-exporter](https://github.com/prometheus/node_exporter/releases) 並執行，
+在client機器中僅需要下載 [Node-exporter](https://github.com/prometheus/node_exporter/releases) 並執行，
 例如在 Linux 中，下載最新版本的 linux-amd64.tar.gz, 解壓縮後直接執行，node-exporter 就會執行，預設 port 為 9100
 
 在 Prometheus.yaml 中，client機器設置正確，就會在 Dashboard 的 Job 可以選擇遠端 client 機器
