@@ -1,13 +1,13 @@
 # 使用 Prometheus 和 Grafana 打造監控預警系統 (Docker 篇)
 
-此專案修改自 [880831ian](https://github.com/880831ian/Prometheus-Grafana-Docker) 的專案，僅修改此專案中的教學作為加入 node-exporter 來監看系統資源，如CPU/RAM 等等
+此專案修改自 [880831ian](https://github.com/owlsinya/My-Prometheus-Grafana-Docker) 的專案，僅修改此專案中的教學作為加入 node-exporter 來監看系統資源，如CPU/RAM 等等
 ##以下為原始教學修改後的文件
 
 在眾多的 Monitor 工具中，[Prometheus](https://prometheus.io/) 是一個很方便且完善的監控預警框架 TSDB (Time Series Database) 時間序列資料庫，可以快速且容易的建立不同維度的指標 (Metrics) 和整合不同的 Alert Tool 以及資訊視覺化圖表的監控工具並提供自帶的 [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) 進行 query 查詢。
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/prometheus.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/prometheus.png)
 
 <br>
 
@@ -16,7 +16,7 @@
 <br>
 
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/prometheus-architecture.jpg)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/prometheus-architecture.jpg)
 (圖片來源：[使用 Prometheus 和 Grafana 打造 Flask Web App 監控預警系統](https://blog.techbridge.cc/2019/08/26/how-to-use-prometheus-grafana-in-flask-app/))
 
 
@@ -38,7 +38,7 @@ Prometheus 可能在儲存擴展上比不上其他 Time Series Database，但在
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/grafana.jpg)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/grafana.jpg)
 
 <br>
 
@@ -48,7 +48,7 @@ Grafana 是由 Grafana Lab 經營的一個非常精美的儀表板系統，可�
 
 今天我們要透過 Docker-Compose 搭配 Nginx 實作一個簡單的 Web Service 範例，並整合 [Prometheus](https://prometheus.io/) 和 [Grafana](https://grafana.com/) 來建立一個 Web Service 監控預警系統。
 
-此文章程式碼也會同步到 Github ，需要的也可以去查看歐！要記得先確定一下自己的版本 [Github 程式碼連結](https://github.com/880831ian/Prometheus-Grafana-Docker) 😆
+此文章程式碼也會同步到 Github ，需要的也可以去查看歐！要記得先確定一下自己的版本 [Github 程式碼連結](https://github.com/owlsinya/My-Prometheus-Grafana-Docker) 😆
 
 <br>
 
@@ -229,7 +229,7 @@ done
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_1.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_1.png)
 
 <br>
 
@@ -237,7 +237,7 @@ done
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_2.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_2.png)
 
 如果有出現，恭喜你完成了 Nginx 以及 nginx-prometheus-exporter 的設定，我們將  Nginx 的 `stub_status` 服務，透過 `http://nginx:8080/stub_status` 讓 nginx-prometheus-exporter 可以抓到圖片中的這些指標 (Metrics)。
 
@@ -249,7 +249,7 @@ done
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_3.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_3.png)
 
 如果兩個出現的都是 <font color='green'>綠色的 UP</font> 就代表正常有抓到資料囉！
 
@@ -259,7 +259,7 @@ done
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_4.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_4.png)
 
 <br>
 
@@ -267,7 +267,7 @@ done
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_5.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_5.png)
 
 這個功能就是把我們所收到的 Nginx 指標 (Metrics)，轉換成圖表讓我們可以知道他的變化。
 
@@ -277,7 +277,7 @@ done
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_6.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_6.png)
 
 可以發現剛剛原本只有 1 個的連接數因為我們模擬總共跑了 10 次，所以連接數變成 11 了！
 
@@ -289,7 +289,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_7.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_7.png)
 
 <br>
 
@@ -297,7 +297,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_8.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_8.png)
 
 <br>
 
@@ -305,7 +305,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_9.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_9.png)
 
 <br>
 
@@ -318,7 +318,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_10.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_10.png)
 
 <br>
 
@@ -326,7 +326,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_11.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_11.png)
 
 <br>
 
@@ -334,7 +334,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_12.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_12.png)
 可以看到在我們使用完測試腳本後，在該時段的資料有明顯的不一樣，代表我們有成功抓到資料 😄
 
 <br>
@@ -343,7 +343,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/run_13.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/run_13.png)
 
 <br>
 
@@ -368,11 +368,11 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/alert_1.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/alert_1.png)
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/alert_2.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/alert_2.png)
 
 <br>
 
@@ -382,7 +382,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/alert_3.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/alert_3.png)
 
 <br>
 
@@ -390,7 +390,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/alert_4.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/alert_4.png)
 
 <br>
 
@@ -398,7 +398,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/alert_5.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/alert_5.png)
 
 <br>
 
@@ -406,7 +406,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/alert_6.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/alert_6.png)
 
 <br>
 
@@ -414,7 +414,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/alert_7.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/alert_7.png)
 
 <br>
 
