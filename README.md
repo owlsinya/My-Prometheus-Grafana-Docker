@@ -347,13 +347,47 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 
 <br>
 
-## 新版說明： 加入 Node-exporter Dashboard
+### 新版說明： 加入 Node-exporter Dashboard
 
 回到 Dashboard > Import, 在 ID 欄位輸入 1860, 選 Load 讀取
 ![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/node_1.png)
 
 <br>
 
+在client機器中僅需要下載 ![Node-exporter](https://github.com/prometheus/node_exporter/releases) 並執行，
+例如在 Linux 中，下載最新版本的 linux-amd64.tar.gz, 解壓縮後直接執行，node-exporter 就會執行，預設 port 為 9100
+
+在 Prometheus.yaml 中，client機器設置正確，就會在 Dashboard 的 Job 可以選擇遠端 client 機器
+ 
+### prometheus.yaml
+以下為 demo 設定本機 (MacOS) & Client (Linux) 的方式
+
+```yaml
+global:
+  scrape_interval: 5s # Server 抓取頻率
+  external_labels:
+    monitor: "my-monitor"
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+  - job_name: "nginx_exporter"
+    static_configs:
+      - targets: ["nginx-prometheus-exporter:9113"]
+  #以下為新增 node-exporter 的demo設定
+  - job_name: "node-exporter-localhost"
+    static_configs:
+      - targets: ["host.docker.internal:9100"]
+  - job_name: "node-exporter-linux"
+    static_configs:
+      - targets: ["172.26.102.125:9100"]
+```
+
+<br>
+
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/node_2.png)
+
+<br>
 #### Alerting 警報
 
 當然除了監控以外，我們還需要有警報系統，因為我們不可能每天都一直盯著儀表板看哪裡有錯誤，所以我們要設定警報的規則，以及警報要發送到哪裡，接著我們一起看下去吧：
