@@ -350,7 +350,7 @@ Prometheus 的圖形化比較單調，所以我們使用 Grafana 來美化我們
 ## 新版說明： 加入 Node-exporter Dashboard
 
 回到 Dashboard > Import, 在 ID 欄位輸入 1860, 選 Load 讀取
-![圖片](https://raw.githubusercontent.com/880831ian/Prometheus-Grafana-Docker/master/images/node_1.png)
+![圖片](https://raw.githubusercontent.com/owlsinya/My-Prometheus-Grafana-Docker/master/images/node_1.png)
 
 <br>
 
