@@ -21,6 +21,42 @@ scrape_configs:
   - job_name: "node-exporter-windows2"
     static_configs:
       - targets: ["172.26.5.148:9182"]
+  
+  # 監控所有 Linux 機器，預設只抓取根目錄 "/"
+  - job_name: "linux-root-default"
+    static_configs:
+      - targets: ["192.168.127.71:9100", "192.168.127.74:9100"] # 包含所有你想要監控的 Linux 機器
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: "node_filesystem_.*"
+        action: keep
+      - source_labels: [mountpoint]
+        regex: "^/$"
+        action: keep
+
+  # 針對 IP 位址為 192.168.127.71 的機器，額外抓取 "/opt" 目錄
+  - job_name: "linux-71-specific"
+    static_configs:
+      - targets: ["192.168.127.71:9100"]
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: "node_filesystem_.*"
+        action: keep
+      - source_labels: [mountpoint]
+        regex: "^(/|/run/lock)$"
+        action: keep
+
+  # 針對 IP 位址為 192.168.127.74 的機器，額外抓取 "/data" 目錄
+  - job_name: "linux-74-specific"
+    static_configs:
+      - targets: ["192.168.127.74:9100"]
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: "node_filesystem_.*"
+        action: keep
+      - source_labels: [mountpoint]
+        regex: "^(/|/run/lock)$"
+        action: keep
 
       # to do list: 研究是否可以觀看同一電腦下的不同槽，並可以自行選擇要看哪一個 disk; 
       # 並且研究要如何透過  docker 多台部署並輸入 ip (長遠研究)
