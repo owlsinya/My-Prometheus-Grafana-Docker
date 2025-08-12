@@ -1,5 +1,5 @@
 global:
-  scrape_interval: 5s # Server 抓取頻率
+  scrape_interval: 30s # Server 抓取頻率
   external_labels:
     monitor: "my-monitor"
 scrape_configs:
@@ -9,74 +9,319 @@ scrape_configs:
   - job_name: "nginx_exporter"
     static_configs:
       - targets: ["nginx-prometheus-exporter:9113"]
-  # - job_name: "node-exporter-localhost"
-  #   static_configs:
-  #     - targets: ["host.docker.internal:9100"]
-  # - job_name: "node-exporter-linux"
-  #   static_configs:
-  #     - targets: ["172.26.102.125:9100"]
-  # - job_name: "node-exporter-windows"
-  #   static_configs:
-  #     - targets: ["172.26.147.229:9182"]
-  # - job_name: "node-exporter-windows2"
-  #   static_configs:
-  #     - targets: ["172.26.5.148:9182"]
   
-  - job_name: "node_exporter"
+  - job_name: "CPU_K8S1_ALL"
     static_configs:
-      # 由于使用了主机网络模式，这里可以直接访问主机上的 exporter
-      - targets: ["host.docker.internal:9100"]
+      - targets: ["172.20.254.101:9100"]
+        labels:
+            alias: 'K8S1_ALL'
+
+  # 暫時先註解掉 特定路徑語法 job
+  # - job_name: "CPU_K8S1_Specific"
+  #   static_configs:
+  #     - targets: ["172.20.254.101:9100"]
+  #       labels:
+  #         alias: 'K8S1_Specific'
+  #   metric_relabel_configs:
+  #     - source_labels: [__name__]
+  #       regex: '(node_uname_info|node_cpu_.*|node_memory_.*|node_filesystem_.*)'
+  #       action: keep
+
+  #     - source_labels: [mountpoint]
+  #       regex: '(^(/|/boot/efi)$|)'
+  #       action: keep
   
-  # 監控所有 Linux 機器，預設只抓取根目錄 "/"
-  # - job_name: "linux-root-default"
-  #   static_configs:
-  #     - targets: ["localhost:9100"] # 包含所有你想要監控的 Linux 機器
-  #   metric_relabel_configs:
-  #     - source_labels: [__name__]
-  #       regex: "node_filesystem_.*"
-  #       action: keep
-  #     - source_labels: [mountpoint]
-  #       regex: "^/$"
-  #       action: keep
-
-  # # 針對 IP 位址為 192.168.127.71 的機器，額外抓取 "/opt" 目錄
-  # - job_name: "linux-71-specific"
-  #   static_configs:
-  #     - targets: ["localhost:9090"]
-  #   metric_relabel_configs:
-  #     - source_labels: [__name__]
-  #       regex: "node_filesystem_.*"
-  #       action: keep
-  #     - source_labels: [mountpoint]
-  #       regex: "^(/|/run/lock)$"
-  #       action: keep
-
-  # # 針對 IP 位址為 192.168.127.74 的機器，額外抓取 "/data" 目錄
-  # - job_name: "linux-74-specific"
-  #   static_configs:
-  #     - targets: ["localhost:9090"]
-  #   metric_relabel_configs:
-  #     - source_labels: [__name__]
-  #       regex: "node_filesystem_.*"
-  #       action: keep
-  #     - source_labels: [mountpoint]
-  #       regex: "^(/|/run/lock)$"
-  #       action: keep
-
-  #K8S1 
-  - job_name: "node-specific"
+    #LPR10-cpu
+  - job_name: "CPU-Lpr10"
     static_configs:
-      - targets: ["host.docker.internal:9100"]
-    metric_relabel_configs:
-      - source_labels: [__name__]
-        regex: "node_filesystem_.*"
-        action: keep
-      - source_labels: [mountpoint]
-        regex: "^(/|/boot/efi)$"  # 監控根目錄和 /boot/efi
-        action: keep
-
-      # to do list: 研究是否可以觀看同一電腦下的不同槽，並可以自行選擇要看哪一個 disk; 
-      # 並且研究要如何透過  docker 多台部署並輸入 ip (長遠研究)
-
+      - targets: ["10.239.35.110:9100"]
+        labels:
+          alias: 'CPU LPR10'
   
+  #LPR11-cpu
+  - job_name: "CPU-Lpr11"
+    static_configs:
+      - targets: ["10.239.35.111:9100"]
+        labels:
+          alias: 'CPU LPR11'
 
+  #LPR12-cpu
+  - job_name: "CPU-Lpr12"
+    static_configs:
+      - targets: ["10.239.35.112:9100"]
+        labels:
+          alias: 'CPU LPR12'
+
+  #LPR13-cpu
+  - job_name: "CPU-Lpr13"
+    static_configs:
+      - targets: ["10.239.35.113:9100"]
+        labels:
+          alias: 'CPU LPR13'
+
+  #LPR14-cpu
+  - job_name: "CPU-Lpr14"
+    static_configs:
+      - targets: ["10.239.35.114:9100"]
+        labels:
+          alias: 'CPU LPR14'
+
+  #LPR01-cpu
+  - job_name: "CPU-Lpr01"
+    static_configs:
+      - targets: ["10.239.35.101:9100"]
+        labels:
+          alias: 'CPU LPR01'
+
+  #LPR02-cpu
+  - job_name: "CPU-Lpr02"
+    static_configs:
+      - targets: ["10.239.35.102:9100"]
+        labels:
+          alias: 'CPU LPR02'
+
+  #LPR03-cpu
+  - job_name: "CPU-Lpr03"
+    static_configs:
+      - targets: ["10.239.35.103:9100"]
+        labels:
+          alias: 'CPU LPR03'
+
+  #LPR04-cpu
+  - job_name: "CPU-Lpr04"
+    static_configs:
+      - targets: ["10.239.35.104:9100"]
+        labels:
+          alias: 'CPU LPR04'
+
+  #LPR05-cpu
+  - job_name: "CPU-Lpr05"
+    static_configs:
+      - targets: ["10.239.35.105:9100"]
+        labels:
+          alias: 'CPU LPR05'
+
+  #LPR06-cpu
+  - job_name: "CPU-Lpr06"
+    static_configs:
+      - targets: ["10.239.35.106:9100"]
+        labels:
+          alias: 'CPU LPR06'
+
+  #LPR07-cpu
+  - job_name: "CPU-Lpr07"
+    static_configs:
+      - targets: ["10.239.35.107:9100"]
+        labels:
+          alias: 'CPU LPR07'
+
+  #LPR08-cpu
+  - job_name: "CPU-Lpr08"
+    static_configs:
+      - targets: ["10.239.35.108:9100"]
+        labels:
+          alias: 'CPU LPR08'
+
+  #LPR09-cpu
+  - job_name: "CPU-Lpr09"
+    static_configs:
+      - targets: ["10.239.35.109:9100"]
+        labels:
+          alias: 'CPU LPR09'
+
+  #ttydb1-cpu
+  - job_name: "CPU-ttydb1"
+    static_configs:
+      - targets: ["10.239.35.11:9100"]
+        labels:
+          alias: 'CPU ttydb1'
+
+  #ttydb2-cpu
+  - job_name: "CPU-ttydb2"
+    static_configs:
+      - targets: ["10.239.35.12:9100"]
+        labels:
+          alias: 'CPU ttydb2'
+
+  #ttydb3-cpu
+  - job_name: "CPU-ttydb3"
+    static_configs:
+      - targets: ["10.239.35.13:9100"]
+        labels:
+          alias: 'CPU ttydb3' 
+
+
+  #LPR15-cpu
+  - job_name: "CPU-Lpr15"
+    static_configs:
+      - targets: ["10.239.35.115:9100"]
+        labels:
+          alias: 'CPU LPR15'
+
+  #LPR16-cpu
+  - job_name: "CPU-Lpr16"
+    static_configs:
+      - targets: ["10.239.35.116:9100"]
+        labels:
+          alias: 'CPU LPR16'
+#-------------------------------------
+  #LPR01-gpu
+  - job_name: "dcgm-exporter-lpr01"
+    static_configs:
+      - targets: ["10.239.35.101:9400"]
+        labels:
+          alias: 'GPU LPR01'
+
+  #LPR02-gpu
+  - job_name: "dcgm-exporter-lpr02"
+    static_configs:
+      - targets: ["10.239.35.102:9400"]
+        labels:
+          alias: 'GPU LPR02'
+
+  #LPR03-gpu
+  - job_name: "dcgm-exporter-lpr03"
+    static_configs:
+      - targets: ["10.239.35.103:9400"]
+        labels:
+          alias: 'GPU LPR03'
+
+  #LPR04-gpu
+  - job_name: "dcgm-exporter-lpr04"
+    static_configs:
+      - targets: ["10.239.35.104:9400"]
+        labels:
+          alias: 'GPU LPR04'
+
+  #LPR05-gpu
+  - job_name: "dcgm-exporter-lpr05"
+    static_configs:
+      - targets: ["10.239.35.105:9400"]
+        labels:
+          alias: 'GPU LPR05'
+
+  #LPR06-gpu
+  - job_name: "dcgm-exporter-lpr06"
+    static_configs:
+      - targets: ["10.239.35.106:9400"]
+        labels:
+          alias: 'GPU LPR06'
+
+  #LPR07-gpu
+  - job_name: "dcgm-exporter-lpr07"
+    static_configs:
+      - targets: ["10.239.35.107:9400"]
+        labels:
+          alias: 'GPU LPR07'
+
+  #LPR08-gpu
+  - job_name: "dcgm-exporter-lpr08"
+    static_configs:
+      - targets: ["10.239.35.108:9400"]
+        labels:
+          alias: 'GPU LPR08'
+
+  #LPR09-gpu
+  - job_name: "dcgm-exporter-lpr09"
+    static_configs:
+      - targets: ["10.239.35.109:9400"]
+        labels:
+          alias: 'GPU LPR09'
+
+  #LPR10-gpu
+  - job_name: "dcgm-exporter-lpr10"
+    static_configs:
+      - targets: ["10.239.35.110:9400"]
+        labels:
+          alias: 'GPU LPR10'
+
+  #LPR11-gpu
+  - job_name: "dcgm-exporter-lpr11"
+    static_configs:
+      - targets: ["10.239.35.111:9400"]
+        labels:
+          alias: 'GPU LPR11'
+
+  #LPR12-gpu
+  - job_name: "dcgm-exporter-lpr12"
+    static_configs:
+      - targets: ["10.239.35.112:9400"]
+        labels:
+          alias: 'GPU LPR12'
+  
+  #LPR13-gpu
+  - job_name: "dcgm-exporter-lpr13"
+    static_configs:
+      - targets: ["10.239.35.113:9400"]
+        labels:
+          alias: 'GPU LPR13'
+
+  #LPR14-gpu
+  - job_name: "dcgm-exporter-lpr14"
+    static_configs:
+      - targets: ["10.239.35.114:9400"]
+        labels:
+          alias: 'GPU LPR14'
+
+  #LPR15-gpu
+  - job_name: "dcgm-exporter-lpr15"
+    static_configs:
+      - targets: ["10.239.35.115:9400"]
+        labels:
+          alias: 'GPU LPR15'
+
+  #LPR16-gpu
+  - job_name: "dcgm-exporter-lpr16"
+    static_configs:
+      - targets: ["10.239.35.116:9400"]
+        labels:
+          alias: 'GPU LPR16'
+
+#------- LPR APP 8080 & 8081 Ports Monitoring -------
+  - job_name: 'lpr-app-8080'
+    static_configs:
+      - targets:
+          - '31.114.254.51'
+          - '31.114.254.52'
+          - '31.114.254.53'
+          - '31.114.254.54'
+          - '31.114.254.55'
+          - '31.114.254.56'
+          - '31.114.254.57'
+          - '31.114.254.58'
+          - '31.114.254.59'
+          - '31.114.254.60'
+          - '31.114.254.61'
+          - '31.114.254.62'
+          - '31.114.254.63'
+          - '31.114.254.64'
+          - '31.114.254.65'
+          - '31.114.254.66'
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __address__
+        replacement: '${1}:8080' # 將讀取到的 IP (${1}) 加上 ":8080"
+
+  # Job 2: 專門監控所有主機的 8081 Port
+  - job_name: 'lpr-app-8081'
+    static_configs:
+      - targets:
+          - '31.114.254.51'
+          - '31.114.254.52'
+          - '31.114.254.53'
+          - '31.114.254.54'
+          - '31.114.254.55'
+          - '31.114.254.56'
+          - '31.114.254.57'
+          - '31.114.254.58'
+          - '31.114.254.59'
+          - '31.114.254.60'
+          - '31.114.254.61'
+          - '31.114.254.62'
+          - '31.114.254.63'
+          - '31.114.254.64'
+          - '31.114.254.65'
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __address__
+        replacement: '${1}:8081' # 將讀取到的 IP (${1}) 加上 ":8081"
