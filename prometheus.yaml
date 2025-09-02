@@ -45,12 +45,12 @@ scrape_configs:
         labels:
           alias: 'CPU LPR11'
 
-  #LPR12-cpu
-  - job_name: "CPU-Lpr12"
-    static_configs:
-      - targets: ["10.239.35.112:9100"]
-        labels:
-          alias: 'CPU LPR12'
+  # #LPR12-cpu
+  # - job_name: "CPU-Lpr12"
+  #   static_configs:
+  #     - targets: ["10.239.35.112:9100"]
+  #       labels:
+  #         alias: 'CPU LPR12'
 
   #LPR13-cpu
   - job_name: "CPU-Lpr13"
@@ -164,6 +164,80 @@ scrape_configs:
       - targets: ["10.239.35.116:9100"]
         labels:
           alias: 'CPU LPR16'
+
+  #LPR18-cpu
+  - job_name: "CPU-Lpr18"
+    static_configs:
+      - targets: ["10.239.35.118:9100"]
+        labels:
+          alias: 'CPU LPR18'
+
+#LPR19-cpu
+  - job_name: "CPU-Lpr19"
+    static_configs:
+      - targets: ["10.239.35.119:9100"]
+        labels:
+          alias: 'CPU LPR19'
+  #LPR20-cpu
+  - job_name: "CPU-Lpr20"
+    static_configs:
+      - targets: ["10.239.35.120:9100"]
+        labels:
+          alias: 'CPU LPR20'
+  #LPR21-cpu
+  - job_name: "CPU-Lpr21"
+    static_configs:
+      - targets: ["10.239.35.121:9100"]
+        labels:
+          alias: 'CPU LPR21'
+  #LPR22-cpu
+  - job_name: "CPU-Lpr22"
+    static_configs:
+      - targets: ["10.239.35.122:9100"]
+        labels:
+          alias: 'CPU LPR22'
+  #LPR23-cpu
+  - job_name: "CPU-Lpr23"
+    static_configs:
+      - targets: ["10.239.35.123:9100"]
+        labels:
+          alias: 'CPU LPR23'
+  #LPR24-cpu
+  - job_name: "CPU-Lpr24"
+    static_configs:
+      - targets: ["10.239.35.124:9100"]
+        labels:
+          alias: 'CPU LPR24'
+  #LPR25-cpu
+  - job_name: "CPU-Lpr25"
+    static_configs:
+      - targets: ["10.239.35.125:9100"]
+        labels:
+          alias: 'CPU LPR25'
+  #LPR26-cpu
+  - job_name: "CPU-Lpr26"
+    static_configs:
+      - targets: ["10.239.35.126:9100"]
+        labels:
+          alias: 'CPU LPR26'
+  #LPR27-cpu
+  - job_name: "CPU-Lpr27"
+    static_configs:
+      - targets: ["10.239.35.127:9100"]
+        labels:
+          alias: 'CPU LPR27'
+  #LPR28-cpu
+  - job_name: "CPU-Lpr28"
+    static_configs:
+      - targets: ["10.239.35.128:9100"]
+        labels:
+          alias: 'CPU LPR28'
+  #LPR29-cpu
+  - job_name: "CPU-Lpr29"
+    static_configs:
+      - targets: ["10.239.35.129:9100"]
+        labels:
+          alias: 'CPU LPR29'
 #-------------------------------------
   #LPR01-gpu
   - job_name: "dcgm-exporter-lpr01"
@@ -242,12 +316,12 @@ scrape_configs:
         labels:
           alias: 'GPU LPR11'
 
-  #LPR12-gpu
-  - job_name: "dcgm-exporter-lpr12"
-    static_configs:
-      - targets: ["10.239.35.112:9400"]
-        labels:
-          alias: 'GPU LPR12'
+  # #LPR12-gpu
+  # - job_name: "dcgm-exporter-lpr12"
+  #   static_configs:
+  #     - targets: ["10.239.35.112:9400"]
+  #       labels:
+  #         alias: 'GPU LPR12'
   
   #LPR13-gpu
   - job_name: "dcgm-exporter-lpr13"
@@ -277,6 +351,80 @@ scrape_configs:
         labels:
           alias: 'GPU LPR16'
 
+  #LPR18-gpu
+  - job_name: "dcgm-exporter-lpr18"
+    static_configs:
+      - targets: ["10.239.35.118:9400"]
+        labels:
+          alias: 'GPU LPR18'
+
+  #LPR19-gpu
+  - job_name: "dcgm-exporter-lpr19"
+    static_configs:
+      - targets: ["10.239.35.119:9400"]
+        labels:
+          alias: 'GPU LPR19'
+
+#LPR20-gpu
+  - job_name: "dcgm-exporter-lpr20"
+    static_configs:
+      - targets: ["10.239.35.120:9400"]
+        labels:
+          alias: 'GPU LPR20'
+  #LPR21-gpu
+  - job_name: "dcgm-exporter-lpr21"
+    static_configs:
+      - targets: ["10.239.35.121:9400"]
+        labels:
+          alias: 'GPU LPR21'
+  #LPR22-gpu
+  - job_name: "dcgm-exporter-lpr22"
+    static_configs:
+      - targets: ["10.239.35.122:9400"]
+        labels:
+          alias: 'GPU LPR22'
+  #LPR23-gpu
+  - job_name: "dcgm-exporter-lpr23"
+    static_configs:
+      - targets: ["10.239.35.123:9400"]
+        labels:
+          alias: 'GPU LPR23'
+  #LPR24-gpu
+  - job_name: "dcgm-exporter-lpr24"
+    static_configs:
+      - targets: ["10.239.35.124:9400"]
+        labels:
+          alias: 'GPU LPR24'
+  #LPR25-gpu
+  - job_name: "dcgm-exporter-lpr25"
+    static_configs:
+      - targets: ["10.239.35.125:9400"]
+        labels:
+          alias: 'GPU LPR25'
+  #LPR26-gpu
+  - job_name: "dcgm-exporter-lpr26"
+    static_configs:
+      - targets: ["10.239.35.126:9400"]
+        labels:
+          alias: 'GPU LPR26'
+  #LPR27-gpu
+  - job_name: "dcgm-exporter-lpr27"
+    static_configs:
+      - targets: ["10.239.35.127:9400"]
+        labels:
+          alias: 'GPU LPR27'
+  #LPR28-gpu
+  - job_name: "dcgm-exporter-lpr28"
+    static_configs:
+      - targets: ["10.239.35.128:9400"]
+        labels:
+          alias: 'GPU LPR28'
+  #LPR29-gpu
+  - job_name: "dcgm-exporter-lpr29"
+    static_configs:
+      - targets: ["10.239.35.129:9400"]
+        labels:
+          alias: 'GPU LPR29'
 #------- LPR APP 8080 & 8081 Ports Monitoring -------
   - job_name: 'lpr-app-8080'
     static_configs:
